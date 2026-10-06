@@ -1,0 +1,263 @@
+/* ==========================================
+   TROPICAL FAVORITES - CSS VARIABLES & THEMING
+   ========================================== */
+:host {
+  --bg-dark: #0a1118;
+  --bg-gradient: linear-gradient(135deg, #0b131f 0%, #162436 50%, #0a1118 100%);
+
+  --coral-sunset: #ff6b6b;
+  --mango-gold: #ffd166;
+  --emerald-palm: #06d6a0;
+  --ocean-cyan: #118ab2;
+
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.tropical-favorites-container {
+  background: var(--bg-gradient);
+  position: relative;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+/* Sfere Luminose d'Ambiente */
+.glow-sphere {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sphere-1 {
+  width: 420px;
+  height: 420px;
+  background: var(--coral-sunset);
+  top: 10%;
+  right: -5%;
+}
+
+.sphere-2 {
+  width: 380px;
+  height: 380px;
+  background: var(--mango-gold);
+  bottom: 5%;
+  left: -5%;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.favorite-badge {
+  background: rgba(255, 107, 107, 0.15);
+  border: 1px solid rgba(255, 107, 107, 0.4);
+  color: var(--coral-sunset);
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, var(--coral-sunset), var(--mango-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Navigazione */
+.btn-back {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  color: rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    transform: translateX(-4px);
+  }
+}
+
+.btn-outline-tropical {
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  color: rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(17, 138, 178, 0.2);
+    border-color: var(--ocean-cyan);
+    color: #ffffff;
+  }
+}
+
+/* Bar Azioni & Statistiche */
+.glass-action-bar {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.text-coral {
+  color: var(--coral-sunset);
+}
+
+.bg-coral-gradient {
+  background: linear-gradient(135deg, var(--coral-sunset) 0%, #e11d48 100%);
+  color: #ffffff;
+}
+
+.btn-clear-all {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(225, 29, 72, 0.2);
+    border-color: #e11d48;
+    color: #ffffff;
+  }
+}
+
+/* Cocktail Cards */
+.tropical-cocktail-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  transition:
+    transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
+    box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+
+    .card-img-top {
+      transform: scale(1.08);
+    }
+  }
+}
+
+.card-img-wrapper {
+  height: 200px;
+  overflow: hidden;
+
+  .card-img-top {
+    height: 100%;
+    width: 100%;
+    transition: transform 0.5s ease;
+  }
+}
+
+.img-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    transparent 40%,
+    rgba(10, 17, 24, 0.95) 100%
+  );
+}
+
+.category-badge {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--mango-gold);
+  border-radius: 8px;
+  font-size: 0.75rem;
+}
+
+.btn-favorite {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+
+  &.is-favorite {
+    background: var(--coral-sunset);
+    color: #ffffff;
+    border-color: var(--coral-sunset);
+    box-shadow: 0 0 12px rgba(255, 107, 107, 0.5);
+
+    &:hover {
+      background: #e11d48;
+      transform: scale(1.1);
+    }
+  }
+}
+
+.border-white-10 {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.tag-badge {
+  background: rgba(6, 214, 160, 0.12);
+  color: var(--emerald-palm);
+  border: 1px solid rgba(6, 214, 160, 0.25);
+  border-radius: 6px;
+}
+
+.btn-details-link {
+  color: #38bdf8;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    color: #ffffff;
+    transform: translateX(3px);
+  }
+}
+
+/* Empty State Style */
+.empty-favorites-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  border: 1px dashed var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.empty-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  color: var(--coral-sunset);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-tropical-cta {
+  background: linear-gradient(135deg, var(--ocean-cyan) 0%, #0284c7 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(135deg, #0284c7 0%, var(--ocean-cyan) 100%);
+    box-shadow: 0 8px 25px rgba(17, 138, 178, 0.4);
+    transform: translateY(-2px);
+  }
+}
+
+.tracking-wide {
+  letter-spacing: 1px;
+}

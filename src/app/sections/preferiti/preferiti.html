@@ -1,0 +1,136 @@
+<div class="tropical-favorites-container min-vh-100 py-5 px-3">
+  <!-- Sfere d'ambiente Glow -->
+  <div class="glow-sphere sphere-1" aria-hidden="true"></div>
+  <div class="glow-sphere sphere-2" aria-hidden="true"></div>
+
+  <div class="container position-relative">
+    <!-- Top Navigation Bar: Pulsanti di Ritorno -->
+    <nav
+      class="mb-4 d-flex justify-content-between align-items-center"
+      aria-label="Navigazione principale"
+    >
+      <a
+        [routerLink]="['/home']"
+        class="btn btn-back d-inline-flex align-items-center py-2 px-3 fw-medium"
+      >
+        <i class="bi bi-arrow-left me-2 fs-5" aria-hidden="true"></i> Home
+      </a>
+
+      <a
+        [routerLink]="['/cocktails']"
+        class="btn btn-outline-tropical d-inline-flex align-items-center py-2 px-3 fw-medium"
+      >
+        <i class="bi bi-journal-richtext me-2" aria-hidden="true"></i> Catalogo
+      </a>
+    </nav>
+
+    <!-- Header della Sezione -->
+    <header class="text-center mb-5 hero-content mx-auto">
+      <span class="badge favorite-badge mb-2 px-3 py-2 rounded-pill fs-6">
+        ❤️ La Tua Collezione
+      </span>
+      <h1 class="display-4 fw-bold hero-title">
+        I Miei <span class="gradient-text">Preferiti</span>
+      </h1>
+      <p class="text-light opacity-75">
+        Tutti i cocktail che hai salvato per le tue serate perfette.
+      </p>
+    </header>
+
+    @if (true) {
+      <!-- favoriteCocktails().length > 0 -->
+      <section
+        class="glass-action-bar p-3 mb-4 rounded-4 d-flex align-items-center justify-content-between flex-wrap gap-3"
+      >
+        <div class="d-flex align-items-center gap-2">
+          <i class="bi bi-heart-fill text-coral fs-5"></i>
+          <span class="fw-semibold text-white">
+            Hai salvato
+            <span class="badge bg-coral-gradient rounded-pill px-3 py-1">10</span>
+            cocktail
+          </span>
+        </div>
+
+        <button
+          type="button"
+          class="btn btn-clear-all btn-sm d-inline-flex align-items-center px-3 py-2 fw-medium"
+        >
+          <i class="bi bi-trash3 me-2"></i> Svuota Preferiti
+        </button>
+      </section>
+    }
+
+    <!-- Griglia dei Cocktail Preferiti -->
+    <main>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4">
+        <!-- @for (cocktail of favoriteCocktails(); track cocktail.id) { -->
+        <div class="col">
+          <article class="card tropical-cocktail-card h-100 overflow-hidden">
+            <div class="card-img-wrapper position-relative">
+              <img [src]="" [alt]="" class="card-img-top object-fit-cover" loading="lazy" />
+              <div class="img-gradient-overlay"></div>
+
+              <span class="badge category-badge position-absolute top-0 start-0 m-3 px-2 py-1">
+                <!-- {{ cocktail.category }} -->
+              </span>
+
+              <button
+                type="button"
+                class="btn btn-favorite is-favorite position-absolute top-0 end-0 m-3 d-flex align-items-center justify-content-center"
+                aria-label="Rimuovi dai preferiti"
+                title="Rimuovi dai preferiti"
+              >
+                <i class="bi bi-heart-fill"></i>
+              </button>
+            </div>
+
+            <div class="card-body d-flex flex-column justify-content-between p-3">
+              <div>
+                <h2 class="h5 card-title text-white fw-bold mb-1"><!-- {{ cocktail.name }} --></h2>
+                <p class="card-text text-white-50 small mb-3">
+                  <!-- {{ cocktail.ingredients.join(' • ') }} -->
+                </p>
+              </div>
+
+              <div
+                class="d-flex align-items-center justify-content-between pt-2 border-top border-white-10"
+              >
+                <span class="badge tag-badge"
+                  ><!-- {{
+                  cocktail.alcoholic ? 'Alcolico' : 'Analcolico'
+                }} --></span
+                >
+                <a class="btn-details-link text-decoration-none small fw-semibold">
+                  Dettagli <i class="bi bi-chevron-right ms-1"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <!--         } @empty {
+          <div class="col-12 text-center py-5">
+            <div
+              class="empty-favorites-card p-5 rounded-4 mx-auto text-center"
+              style="max-width: 520px"
+            >
+              <div class="empty-icon-wrapper mb-4 mx-auto">
+                <i class="bi bi-heartbreak fs-1"></i>
+              </div>
+              <h3 class="h4 text-white fw-bold mb-2">Nessun preferito salvato</h3>
+              <p class="text-white-50 small mb-4">
+                Non hai ancora aggiunto alcun cocktail alla tua lista dei desideri. Esplora il
+                catalogo e trova il tuo prossimo drink preferito!
+              </p>
+              <a
+                [routerLink]="['/catalogo']"
+                class="btn btn-tropical-cta px-4 py-3 fw-bold text-uppercase tracking-wide text-decoration-none d-inline-block"
+              >
+                <i class="bi bi-search me-2"></i> Esplora il Catalogo
+              </a>
+            </div>
+          </div>
+        } -->
+      </div>
+    </main>
+  </div>
+</div>
