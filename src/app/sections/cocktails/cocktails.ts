@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, Signal, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, Signal, signal } from '@angular/core';
 import { CocktailsService } from '../../services/cocktails/cocktails.service';
 import { Cocktail, Drinks } from '../../models/cocktail';
 import { RouterLink } from '@angular/router';
@@ -20,8 +20,9 @@ export class Cocktails implements OnInit {
   cocktailsPreferiti!: Signal<Cocktail[]>;
   cocktail = new FormControl();
   listaNonFiltrata: Cocktail[] = [];
-  readonly filtroSelezionato = signal<TipoFiltro>('tutti');
-  readonly sortType = signal<TipoOrdinamento>('');
+  filtroSelezionato = signal<TipoFiltro>('tutti');
+  sortType = signal<TipoOrdinamento>('');
+  preferitiIds = computed(() => new Set(this.cocktailsPreferiti().map((c) => c.idDrink)));
 
   ngOnInit(): void {
     this.cocktailsPreferiti = this.cocktailsService.getCocktailsPreferiti;
@@ -53,14 +54,6 @@ export class Cocktails implements OnInit {
       this.cocktailsService.setCocktailsPreferiti.set([...this.cocktailsPreferiti(), cocktail]);
     }
     console.log(this.cocktailsPreferiti());
-  }
-
-  cocktailIsPreferito(cocktail: Cocktail): boolean {
-    if (this.cocktailsPreferiti().includes(cocktail)) {
-      return true;
-    } else {
-      return false;
-    }
   }
 
   sort(e: any) {

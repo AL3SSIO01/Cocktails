@@ -39,7 +39,7 @@
             <input
               type="text"
               class="form-control bg-transparent text-white border-0 shadow-none ps-2"
-              placeholder="Cerca per nome o ingrediente (es. Mojito, Rum...)"
+              placeholder="Cerca cocktail"
               aria-label="Cerca cocktail"
               [formControl]="cocktail"
             />
@@ -53,21 +53,6 @@
             </button>
           </div>
         </div>
-
-        <!--         <div class="col-12 col-md-4 col-lg-3">
-          <div class="w-100">
-            <button
-              class="btn btn-glass-select w-100 d-flex align-items-center justify-content-between py-2 px-3"
-              type="button"
-              id="sortDropdown"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-              (click)="sort('asc')"
-            >
-              <span><i class="bi bi-sort-down me-2"></i>Ordina per: Nome</span>
-            </button>
-          </div>
-        </div> -->
         <div class="col-12 col-md-4 col-lg-3">
           <div class="position-relative">
             <select
@@ -122,7 +107,6 @@
               <div class="card-img-wrapper position-relative">
                 <img
                   [src]="cocktail.strDrinkThumb"
-                  [alt]="cocktail.strDrink"
                   class="card-img-top object-fit-cover"
                   loading="lazy"
                 />
@@ -131,12 +115,12 @@
                   type="button"
                   class="btn btn-favorite position-absolute top-0 end-0 m-3 d-flex align-items-center justify-content-center"
                   (click)="gestisciPreferiti(cocktail)"
-                  [class.is-favorite]="cocktailIsPreferito(cocktail)"
+                  [class.is-favorite]="preferitiIds().has(cocktail.idDrink)"
                 >
                   <i
                     class="bi"
-                    [class.bi-heart]=""
-                    [class.bi-heart-fill]="cocktailIsPreferito(cocktail)"
+                    [class.bi-heart]="!preferitiIds().has(cocktail.idDrink)"
+                    [class.bi-heart-fill]="preferitiIds().has(cocktail.idDrink)"
                   ></i>
                 </button>
               </div>
