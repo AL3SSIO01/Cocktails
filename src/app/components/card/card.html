@@ -27,7 +27,10 @@
         class="d-flex align-items-center justify-content-between pt-2 border-top border-white-10"
       >
         <span class="badge tag-badge">{{ cocktail.strAlcoholic }}</span>
-        <a class="btn-details-link text-decoration-none small fw-semibold">
+        <a
+          class="btn-details-link text-decoration-none small fw-semibold"
+          (click)="openDialog(cocktail.idDrink)"
+        >
           Dettagli <i class="bi bi-chevron-right ms-1"></i>
         </a>
       </div>

@@ -29,4 +29,8 @@ export class Preferiti implements OnInit {
     }
     console.log(this.cocktailsPreferiti());
   }
+
+  svuotaPreferiti() {
+    this.cocktailsService.setCocktailsPreferiti.set([]);
+  }
 }
