@@ -1,1 +1,13 @@
+:host {
+  --bg-dark: #0a1118;
+  --bg-gradient: linear-gradient(135deg, #0b131f 0%, #162436 50%, #0a1118 100%);
 
+  --coral-sunset: #ff6b6b;
+  --mango-gold: #ffd166;
+  --emerald-palm: #06d6a0;
+  --ocean-cyan: #118ab2;
+
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
