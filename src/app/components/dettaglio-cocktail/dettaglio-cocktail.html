@@ -1,12 +1,48 @@
-<div class="cocktail-dialog">
-  <header class="modal-header">
-    <div class="header-titles">
-      <span class="badge" [class.badge--alcoholic]="" [class.badge--non-alcoholic]=""> </span>
-      <h2 mat-dialog-title class="cocktail-title">Nome</h2>
-    </div>
-  </header>
+<div>
+  <mat-dialog-content>
+    @if (cocktail(); as item) {
+      <div class="d-flex justify-content-between">
+        <div class="col-6">
+          <img [src]="item.strDrinkThumb" class="thumb" />
+        </div>
+        <div class="col-6 p-2">
+          <div class="mb-2">
+            <h2 class="fs-2">{{ item.strDrink }}</h2>
+          </div>
+          <div class="mb-3">
+            <mat-chip-set>
+              <mat-chip>{{ item.strCategory }}</mat-chip>
+              <mat-chip>{{ item.strGlass }}</mat-chip>
+              <mat-chip>{{ item.strAlcoholic }}</mat-chip>
+            </mat-chip-set>
+          </div>
+          <div class="mb-3">
+            <h5>Preparazione:</h5>
+            <p>{{ item.strInstructionsIT ? item.strInstructionsIT : item.strInstructions }}</p>
+          </div>
+          <div class="mb-3">
+            <h5>Ingredienti:</h5>
+            <mat-list>
+              <mat-list-item togglePosition="after">
+                <img
+                  matListItemAvatar
+                  src="https://material.angular.dev/assets/img/examples/shiba2.jpg"
+                />
+                <span matListItemTitle>Other Shiba Inu</span>
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </div>
+      </div>
+    } @else {
+      <mat-spinner style="margin: 0 auto"></mat-spinner>
+    }
+  </mat-dialog-content>
 
-  <mat-dialog-content class="modal-body"> </mat-dialog-content>
-
-  <mat-dialog-actions align="end" class="modal-footer"> </mat-dialog-actions>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Chiudi</button>
+    @if (cocktail()) {
+      <button mat-flat-button cdkFocusInitial>Aggiungi ai preferiti</button>
+    }
+  </mat-dialog-actions>
 </div>
