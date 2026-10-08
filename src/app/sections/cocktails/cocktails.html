@@ -2,117 +2,120 @@
   <!-- Sfere d'ambiente Glow -->
   <div class="glow-sphere sphere-1" aria-hidden="true"></div>
   <div class="glow-sphere sphere-2" aria-hidden="true"></div>
+  @if (!loader()) {
+    <div class="container position-relative">
+      <nav class="mb-4 d-flex" aria-label="Navigazione principale">
+        <a
+          [routerLink]="['/home']"
+          class="btn btn-back d-inline-flex align-items-center py-2 px-3 fw-medium"
+        >
+          <i class="bi bi-arrow-left me-2 fs-5" aria-hidden="true"></i> Home
+        </a>
+      </nav>
+      <!-- Header della Sezione -->
+      <header class="text-center mb-5 hero-content mx-auto">
+        <span class="badge tropical-badge mb-2 px-3 py-2 rounded-pill fs-6">
+          🍸 Tropical Collection
+        </span>
+        <h1 class="display-4 fw-bold hero-title">
+          Catalogo <span class="gradient-text">Cocktail</span>
+        </h1>
+        <p class="text-light opacity-75">
+          Cerca tra i nostri drink tropicali e classici, filtra per tipologia e salva i tuoi
+          preferiti.
+        </p>
+      </header>
 
-  <div class="container position-relative">
-    <nav class="mb-4 d-flex" aria-label="Navigazione principale">
-      <a
-        [routerLink]="['/home']"
-        class="btn btn-back d-inline-flex align-items-center py-2 px-3 fw-medium"
+      <section
+        class="glass-toolbar p-3 p-md-4 mb-5 rounded-4"
+        aria-label="Filtri e ricerca cataloghi"
       >
-        <i class="bi bi-arrow-left me-2 fs-5" aria-hidden="true"></i> Home
-      </a>
-    </nav>
-    <!-- Header della Sezione -->
-    <header class="text-center mb-5 hero-content mx-auto">
-      <span class="badge tropical-badge mb-2 px-3 py-2 rounded-pill fs-6">
-        🍸 Tropical Collection
-      </span>
-      <h1 class="display-4 fw-bold hero-title">
-        Catalogo <span class="gradient-text">Cocktail</span>
-      </h1>
-      <p class="text-light opacity-75">
-        Cerca tra i nostri drink tropicali e classici, filtra per tipologia e salva i tuoi
-        preferiti.
-      </p>
-    </header>
-
-    <section
-      class="glass-toolbar p-3 p-md-4 mb-5 rounded-4"
-      aria-label="Filtri e ricerca cataloghi"
-    >
-      <div class="row g-3 mb-4 align-items-center">
-        <div class="col-12 col-md-8 col-lg-9">
-          <div class="input-group search-input-group overflow-hidden">
-            <span class="input-group-text bg-transparent border-0 text-white-50 ps-3">
-              <i class="bi bi-search fs-5"></i>
-            </span>
-            <input
-              type="text"
-              class="form-control bg-transparent text-white border-0 shadow-none ps-2"
-              placeholder="Cerca cocktail"
-              aria-label="Cerca cocktail"
-              [formControl]="cocktail"
-            />
-            <button
-              class="btn btn-search-trigger px-4 fw-semibold text-white d-flex align-items-center"
-              type="button"
-              (click)="searchCocktails()"
-            >
-              <span>Cerca</span>
-              <i class="bi bi-arrow-right-short ms-1 fs-4 d-none d-sm-inline"></i>
-            </button>
-          </div>
-        </div>
-        <div class="col-12 col-md-4 col-lg-3">
-          <div class="position-relative">
-            <select
-              class="form-select btn-glass-select py-2 px-3 text-white"
-              (change)="sort($any($event.target).value)"
-              aria-label="Ordina cocktail"
-            >
-              <option value="" class="bg-dark text-white">Scegli ordinamento</option>
-              <option value="asc" class="bg-dark text-white">Ordina per: Nome (A - Z)</option>
-              <option value="desc" class="bg-dark text-white">Ordina per: Nome (Z - A)</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <!-- Fila Inferiore: Filtri per Categoria (Pills) -->
-      <div class="filter-pills d-flex flex-wrap gap-2 align-items-center">
-        <span class="text-white-50 small me-2 d-none d-sm-inline">Filtra per:</span>
-        <button
-          type="button"
-          class="btn btn-pill"
-          [class.active]="filtroSelezionato() == 'tutti'"
-          (click)="filtra('tutti')"
-        >
-          Tutti
-        </button>
-        <button
-          type="button"
-          class="btn btn-pill"
-          [class.active]="filtroSelezionato() == 'alcolici'"
-          (click)="filtra('alcolici')"
-        >
-          Alcolici
-        </button>
-        <button
-          type="button"
-          class="btn btn-pill"
-          [class.active]="filtroSelezionato() == 'analcolici'"
-          (click)="filtra('analcolici')"
-        >
-          Non alcolici
-        </button>
-      </div>
-    </section>
-    <main>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4">
-        @for (cocktail of cocktails(); track cocktail.idDrink) {
-          <app-card [cocktail]="cocktail"></app-card>
-        } @empty {
-          <div class="col-12 text-center py-5">
-            <div class="empty-state p-5 rounded-4 mx-auto" style="max-width: 500px">
-              <i class="bi bi-search fs-1 text-white-50 mb-3 d-block"></i>
-              <h3 class="h4 text-white fw-bold">Nessun cocktail trovato</h3>
-              <p class="text-white-50 small mb-0">
-                Prova a cambiare i parametri di ricerca o a resettare i filtri.
-              </p>
+        <div class="row g-3 mb-4 align-items-center">
+          <div class="col-12 col-md-8 col-lg-9">
+            <div class="input-group search-input-group overflow-hidden">
+              <span class="input-group-text bg-transparent border-0 text-white-50 ps-3">
+                <i class="bi bi-search fs-5"></i>
+              </span>
+              <input
+                type="text"
+                class="form-control bg-transparent text-white border-0 shadow-none ps-2"
+                placeholder="Cerca cocktail"
+                aria-label="Cerca cocktail"
+                [formControl]="cocktail"
+              />
+              <button
+                class="btn btn-search-trigger px-4 fw-semibold text-white d-flex align-items-center"
+                type="button"
+                (click)="searchCocktails()"
+              >
+                <span>Cerca</span>
+                <i class="bi bi-arrow-right-short ms-1 fs-4 d-none d-sm-inline"></i>
+              </button>
             </div>
           </div>
-        }
-      </div>
-    </main>
-  </div>
+          <div class="col-12 col-md-4 col-lg-3">
+            <div class="position-relative">
+              <select
+                class="form-select btn-glass-select py-2 px-3 text-white"
+                (change)="sort($any($event.target).value)"
+                aria-label="Ordina cocktail"
+              >
+                <option value="" class="bg-dark text-white">Scegli ordinamento</option>
+                <option value="asc" class="bg-dark text-white">Ordina per: Nome (A - Z)</option>
+                <option value="desc" class="bg-dark text-white">Ordina per: Nome (Z - A)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fila Inferiore: Filtri per Categoria (Pills) -->
+        <div class="filter-pills d-flex flex-wrap gap-2 align-items-center">
+          <span class="text-white-50 small me-2 d-none d-sm-inline">Filtra per:</span>
+          <button
+            type="button"
+            class="btn btn-pill"
+            [class.active]="filtroSelezionato() == 'tutti'"
+            (click)="filtra('tutti')"
+          >
+            Tutti
+          </button>
+          <button
+            type="button"
+            class="btn btn-pill"
+            [class.active]="filtroSelezionato() == 'alcolici'"
+            (click)="filtra('alcolici')"
+          >
+            Alcolici
+          </button>
+          <button
+            type="button"
+            class="btn btn-pill"
+            [class.active]="filtroSelezionato() == 'analcolici'"
+            (click)="filtra('analcolici')"
+          >
+            Non alcolici
+          </button>
+        </div>
+      </section>
+      <main>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4">
+          @for (cocktail of cocktails(); track cocktail.idDrink) {
+            <app-card [cocktail]="cocktail"></app-card>
+          } @empty {
+            <div class="col-12 text-center py-5">
+              <div class="empty-state p-5 rounded-4 mx-auto" style="max-width: 500px">
+                <i class="bi bi-search fs-1 text-white-50 mb-3 d-block"></i>
+                <h3 class="h4 text-white fw-bold">Nessun cocktail trovato</h3>
+                <p class="text-white-50 small mb-0">
+                  Prova a cambiare i parametri di ricerca o a resettare i filtri.
+                </p>
+              </div>
+            </div>
+          }
+        </div>
+      </main>
+    </div>
+  } @else {
+    <mat-spinner class="spinner-container"></mat-spinner>
+  }
 </div>

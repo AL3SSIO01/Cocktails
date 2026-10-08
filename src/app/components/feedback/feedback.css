@@ -1,0 +1,12 @@
+.negative-feedback {
+  background-color: red;
+}
+
+.positive-feedback {
+  background-color: green;
+}
+
+.feedback {
+  color: white;
+  border-radius: 10px;
+}

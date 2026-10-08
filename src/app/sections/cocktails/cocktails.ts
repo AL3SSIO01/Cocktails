@@ -1,9 +1,12 @@
-import { Component, computed, inject, OnInit, Signal, signal } from '@angular/core';
+import { Component, computed, inject, OnDestroy, OnInit, Signal, signal } from '@angular/core';
 import { CocktailsService } from '../../services/cocktails/cocktails.service';
 import { Cocktail, Drinks } from '../../models/cocktail';
 import { RouterLink } from '@angular/router';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Card } from '../../components/card/card';
+import { Subscription } from 'rxjs';
+import { LoaderService } from '../../services/loader/loader.service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 export type TipoFiltro = 'tutti' | 'alcolici' | 'analcolici';
 export type TipoOrdinamento = 'asc' | 'desc' | '';
@@ -11,11 +14,12 @@ export type TipoOrdinamento = 'asc' | 'desc' | '';
 @Component({
   selector: 'app-cocktails',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule, Card],
+  imports: [RouterLink, ReactiveFormsModule, Card, MatProgressSpinnerModule],
   templateUrl: './cocktails.html',
   styleUrl: './cocktails.css',
 })
-export class Cocktails implements OnInit {
+export class Cocktails implements OnInit, OnDestroy {
+  loaderService = inject(LoaderService);
   cocktailsService = inject(CocktailsService);
   cocktails = signal<Cocktail[]>([]);
   cocktailsPreferiti!: Signal<Cocktail[]>;
@@ -24,16 +28,22 @@ export class Cocktails implements OnInit {
   filtroSelezionato = signal<TipoFiltro>('tutti');
   sortType = signal<TipoOrdinamento>('');
   preferitiIds = computed(() => new Set(this.cocktailsPreferiti().map((c) => c.idDrink)));
+  search!: Subscription;
+  loader = this.loaderService.getLoader;
 
   ngOnInit(): void {
     this.cocktailsPreferiti = this.cocktailsService.getCocktailsPreferiti;
-    console.log(this.cocktailsPreferiti());
-    this.searchCocktails();
+    //this.searchCocktails();
+  }
+
+  ngOnDestroy(): void {
+    this.search?.unsubscribe();
   }
 
   searchCocktails() {
+    this.loaderService.setLoader.set(true);
     this.filtroSelezionato.set('tutti');
-    this.cocktailsService.searchCocktails(this.cocktail.value).subscribe({
+    this.search = this.cocktailsService.searchCocktails(this.cocktail.value).subscribe({
       next: (res: Drinks) => {
         if (typeof res.drinks == 'string') {
           this.cocktails.set([]);
@@ -41,8 +51,11 @@ export class Cocktails implements OnInit {
           this.cocktails.set(res.drinks);
           this.listaNonFiltrata = res.drinks;
         }
+        this.loaderService.setLoader.set(false);
       },
-      error: () => {},
+      error: () => {
+        this.loaderService.setLoader.set(false);
+      },
     });
   }
 

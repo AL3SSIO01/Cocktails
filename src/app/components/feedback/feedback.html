@@ -1,0 +1,11 @@
+@if (feedback().aperto) {
+  <div
+    [class.positive-feedback]="feedback().positivo"
+    [class.negative-feedback]="!feedback().positivo"
+    class="feedback"
+  >
+    <p class="p-3 fw-medium">
+      {{ feedback().messaggio }}
+    </p>
+  </div>
+}
