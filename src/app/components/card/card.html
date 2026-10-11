@@ -1,18 +1,23 @@
 <div class="col">
   <article class="card tropical-cocktail-card h-100 overflow-hidden">
     <div class="card-img-wrapper position-relative">
-      <img [src]="cocktail.strDrinkThumb" class="card-img-top object-fit-cover" loading="lazy" />
+      <img
+        [src]="cocktail.strDrinkThumb"
+        alt="🍸"
+        class="card-img-top object-fit-cover"
+        loading="lazy"
+      />
       <div class="img-gradient-overlay"></div>
       <button
         type="button"
         class="btn btn-favorite position-absolute top-0 end-0 m-3 d-flex align-items-center justify-content-center"
-        (click)="gestisciPreferiti(cocktail)"
-        [class.is-favorite]="preferitiIds().has(cocktail.idDrink)"
+        (click)="cocktailsService.gestisciPreferiti(cocktail)"
+        [class.is-favorite]="cocktailsService.preferitiIds().has(cocktail.idDrink)"
       >
         <i
           class="bi"
-          [class.bi-heart]="!preferitiIds().has(cocktail.idDrink)"
-          [class.bi-heart-fill]="preferitiIds().has(cocktail.idDrink)"
+          [class.bi-heart]="!cocktailsService.preferitiIds().has(cocktail.idDrink)"
+          [class.bi-heart-fill]="cocktailsService.preferitiIds().has(cocktail.idDrink)"
         ></i>
       </button>
     </div>

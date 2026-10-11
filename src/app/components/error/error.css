@@ -1,0 +1,18 @@
+.cocktail-error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 250px;
+  width: 100%;
+
+  .error-card {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    max-width: 400px;
+    width: 100%;
+
+    .error-icon {
+      animation: pulseError 2s infinite;
+    }
+  }
+}

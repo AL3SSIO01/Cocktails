@@ -1,49 +1,82 @@
 <div>
-  <mat-dialog-content>
+  <mat-dialog-content class="cocktail-dialog-content">
     @if (cocktail(); as item) {
-      <div class="d-flex justify-content-between">
-        <div class="col-6">
-          <img [src]="item.strDrinkThumb" class="thumb" />
+      <div class="row g-4 align-items-center">
+        <!-- Colonna Immagine & Preferito -->
+        <div class="col-md-5">
+          <div class="position-relative cocktail-img-wrapper shadow-lg rounded-4 overflow-hidden">
+            <img
+              [src]="item.strDrinkThumb"
+              [alt]="item.strDrink"
+              class="img-fluid object-fit-cover w-100 h-100"
+              loading="lazy"
+            />
+            <div class="img-gradient-overlay"></div>
+            <button
+              type="button"
+              class="btn btn-favorite position-absolute top-0 end-0 m-3 d-flex align-items-center justify-content-center"
+              (click)="cocktailsService.gestisciPreferiti(item)"
+              [class.is-favorite]="cocktailsService.preferitiIds().has(item.idDrink)"
+              title="Aggiungi ai preferiti"
+            >
+              <i
+                class="bi"
+                [class.bi-heart]="!cocktailsService.preferitiIds().has(item.idDrink)"
+                [class.bi-heart-fill]="cocktailsService.preferitiIds().has(item.idDrink)"
+              ></i>
+            </button>
+          </div>
         </div>
-        <div class="col-6 p-2">
-          <div class="mb-2">
-            <h2 class="fs-2">{{ item.strDrink }}</h2>
-          </div>
+
+        <!-- Colonna Dettagli & Ingredienti -->
+        <div class="col-md-7 ps-md-4">
           <div class="mb-3">
-            <mat-chip-set>
-              <mat-chip>{{ item.strCategory }}</mat-chip>
-              <mat-chip>{{ item.strGlass }}</mat-chip>
-              <mat-chip>{{ item.strAlcoholic }}</mat-chip>
-            </mat-chip-set>
+            <span class="badge-category text-uppercase tracking-wider mb-2 d-inline-block">
+              {{ item.strCategory }}
+            </span>
+            <h2 class="cocktail-title display-6 fw-bold mb-3">{{ item.strDrink }}</h2>
+            <span class="badge-category text-uppercase tracking-wider d-inline-block">
+              <i class="bi bi-cup-straw me-1"></i> {{ item.strGlass }}
+            </span>
+            <span class="badge-category text-uppercase tracking-wider d-inline-block">
+              {{ item.strAlcoholic }}
+            </span>
           </div>
-          <div class="mb-3">
-            <h5>Preparazione:</h5>
-            <p>{{ item.strInstructionsIT ? item.strInstructionsIT : item.strInstructions }}</p>
-          </div>
-          <div class="mb-3">
-            <h5>Ingredienti:</h5>
-            <mat-list>
-              <mat-list-item togglePosition="after">
-                <img
-                  matListItemAvatar
-                  src="https://material.angular.dev/assets/img/examples/shiba2.jpg"
-                />
-                <span matListItemTitle>Other Shiba Inu</span>
-              </mat-list-item>
-            </mat-list>
+
+          <div class="ingredients-section mb-3">
+            <h5 class="section-title"><i class="bi bi-list-check me-2"></i>Ingredienti</h5>
+            <ul class="ingredients-list list-unstyled">
+              @for (ingrediente of getDettaglioIngredienti(item); track $index) {
+                <li class="d-flex align-items-center mb-2">
+                  <span class="bullet-dot me-2"></span>
+                  <strong class="me-2 text-warning-emphasis">{{ ingrediente.misura }}</strong>
+                  <span class="text-secondary-emphasis">{{ ingrediente.nome }}</span>
+                </li>
+              }
+            </ul>
           </div>
         </div>
       </div>
+
+      <!-- Sezione Preparazione -->
+      <div class="preparation-section mt-4 pt-3 border-top border-light-subtle">
+        <h5 class="section-title"><i class="bi bi-journal-text me-2"></i>Preparazione</h5>
+        <p class="preparation-text text-muted lh-base">
+          {{ item.strInstructionsIT ? item.strInstructionsIT : item.strInstructions }}
+        </p>
+      </div>
     } @else {
-      <app-feedback></app-feedback>
-      <mat-spinner style="margin: 0 auto"></mat-spinner>
+      <div class="text-center py-5">
+        @if (hasError()) {
+          <app-error (ricarica)="ricaricaCocktail()" [button]="'Ricarica cocktail'"></app-error>
+        } @else {
+          <mat-spinner style="margin: 20px auto"></mat-spinner>
+        }
+      </div>
     }
   </mat-dialog-content>
 
-  <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Chiudi</button>
-    @if (cocktail()) {
-      <button mat-flat-button cdkFocusInitial>Aggiungi ai preferiti</button>
-    }
+  <mat-dialog-actions align="end" class="m-2">
+    <button class="btn btn-secondary" mat-dialog-close>Chiudi</button>
   </mat-dialog-actions>
 </div>

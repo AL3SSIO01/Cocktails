@@ -1,0 +1,19 @@
+<div class="cocktail-error-container text-center p-4">
+  <div class="error-card shadow-sm p-4 rounded" role="alert" aria-live="assertive">
+    <div class="error-icon mb-3">
+      <i class="bi bi-exclamation-triangle-fill text-warning fs-1" aria-hidden="true"></i>
+    </div>
+
+    <h3 class="h5 fw-bold text-dark mb-2">Attenzione</h3>
+    <p class="text-muted mb-4">Qualcosa è andato storto, riprova.</p>
+
+    <button
+      class="btn btn-primary d-inline-flex align-items-center gap-2 px-4 py-2"
+      type="button"
+      (click)="refresh()"
+    >
+      <i class="bi bi-arrow-clockwise" aria-hidden="true"></i>
+      {{ button }}
+    </button>
+  </div>
+</div>

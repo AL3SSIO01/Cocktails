@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnDestroy, OnInit, Signal, signal } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, Signal, signal } from '@angular/core';
 import { CocktailsService } from '../../services/cocktails/cocktails.service';
 import { Cocktail, Drinks } from '../../models/cocktail';
 import { RouterLink } from '@angular/router';
@@ -7,6 +7,7 @@ import { Card } from '../../components/card/card';
 import { Subscription } from 'rxjs';
 import { LoaderService } from '../../services/loader/loader.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { Error } from '../../components/error/error';
 
 export type TipoFiltro = 'tutti' | 'alcolici' | 'analcolici';
 export type TipoOrdinamento = 'asc' | 'desc' | '';
@@ -14,7 +15,7 @@ export type TipoOrdinamento = 'asc' | 'desc' | '';
 @Component({
   selector: 'app-cocktails',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule, Card, MatProgressSpinnerModule],
+  imports: [RouterLink, ReactiveFormsModule, Card, MatProgressSpinnerModule, Error],
   templateUrl: './cocktails.html',
   styleUrl: './cocktails.css',
 })
@@ -27,13 +28,12 @@ export class Cocktails implements OnInit, OnDestroy {
   listaNonFiltrata: Cocktail[] = [];
   filtroSelezionato = signal<TipoFiltro>('tutti');
   sortType = signal<TipoOrdinamento>('');
-  preferitiIds = computed(() => new Set(this.cocktailsPreferiti().map((c) => c.idDrink)));
   search!: Subscription;
   loader = this.loaderService.getLoader;
+  hasError = signal<boolean>(false);
 
   ngOnInit(): void {
     this.cocktailsPreferiti = this.cocktailsService.getCocktailsPreferiti;
-    //this.searchCocktails();
   }
 
   ngOnDestroy(): void {
@@ -51,23 +51,14 @@ export class Cocktails implements OnInit, OnDestroy {
           this.cocktails.set(res.drinks);
           this.listaNonFiltrata = res.drinks;
         }
+        this.hasError.set(false);
         this.loaderService.setLoader.set(false);
       },
       error: () => {
+        this.hasError.set(true);
         this.loaderService.setLoader.set(false);
       },
     });
-  }
-
-  gestisciPreferiti(cocktail: Cocktail) {
-    if (this.cocktailsPreferiti().includes(cocktail)) {
-      this.cocktailsService.setCocktailsPreferiti.set(
-        this.cocktailsPreferiti().filter((c) => c.idDrink != cocktail.idDrink),
-      );
-    } else {
-      this.cocktailsService.setCocktailsPreferiti.set([...this.cocktailsPreferiti(), cocktail]);
-    }
-    console.log(this.cocktailsPreferiti());
   }
 
   sort(e: any) {

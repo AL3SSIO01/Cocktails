@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Feedback } from './feedback';
+import { Error } from './error';
 
-describe('Feedback', () => {
-  let component: Feedback;
-  let fixture: ComponentFixture<Feedback>;
+describe('Error', () => {
+  let component: Error;
+  let fixture: ComponentFixture<Error>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Feedback],
+      imports: [Error],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Feedback);
+    fixture = TestBed.createComponent(Error);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

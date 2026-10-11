@@ -1,5 +1,5 @@
 .tropical-favorites-container {
-  background: var(--bg-gradient);
+  background: linear-gradient(135deg, #0b131f 0%, #162436 50%, #0a1118 100%);
   position: relative;
   overflow: hidden;
   color: #ffffff;
@@ -18,7 +18,7 @@
 .sphere-1 {
   width: 420px;
   height: 420px;
-  background: var(--coral-sunset);
+  background: #ff6b6b;
   top: 10%;
   right: -5%;
 }
@@ -26,7 +26,7 @@
 .sphere-2 {
   width: 380px;
   height: 380px;
-  background: var(--mango-gold);
+  background: #ffd166;
   bottom: 5%;
   left: -5%;
 }
@@ -38,20 +38,20 @@
 .favorite-badge {
   background: rgba(255, 107, 107, 0.15);
   border: 1px solid rgba(255, 107, 107, 0.4);
-  color: var(--coral-sunset);
+  color: #ff6b6b;
 }
 
 .gradient-text {
-  background: linear-gradient(45deg, var(--coral-sunset), var(--mango-gold));
+  background: linear-gradient(45deg, #ff6b6b, #ffd166);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 /* Navigazione */
 .btn-back {
-  background: var(--glass-bg);
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: rgba(255, 255, 255, 0.85);
   border-radius: 12px;
   transition: all 0.3s ease;
@@ -65,32 +65,32 @@
 
 .btn-outline-tropical {
   background: transparent;
-  border: 1px solid var(--glass-border);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: rgba(255, 255, 255, 0.85);
   border-radius: 12px;
   transition: all 0.3s ease;
 
   &:hover {
     background: rgba(17, 138, 178, 0.2);
-    border-color: var(--ocean-cyan);
+    border-color: #118ab2;
     color: #ffffff;
   }
 }
 
 /* Bar Azioni & Statistiche */
 .glass-action-bar {
-  background: var(--glass-bg);
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
 .text-coral {
-  color: var(--coral-sunset);
+  color: #ff6b6b;
 }
 
 .bg-coral-gradient {
-  background: linear-gradient(135deg, var(--coral-sunset) 0%, #e11d48 100%);
+  background: linear-gradient(135deg, #ff6b6b 0%, #e11d48 100%);
   color: #ffffff;
 }
 
@@ -109,10 +109,10 @@
 }
 
 .empty-favorites-card {
-  background: var(--glass-bg);
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(16px);
-  border: 1px dashed var(--glass-border);
-  box-shadow: var(--glass-shadow);
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
 .empty-icon-wrapper {
@@ -121,21 +121,21 @@
   border-radius: 50%;
   background: rgba(255, 107, 107, 0.1);
   border: 1px solid rgba(255, 107, 107, 0.3);
-  color: var(--coral-sunset);
+  color: #ff6b6b;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .btn-tropical-cta {
-  background: linear-gradient(135deg, var(--ocean-cyan) 0%, #0284c7 100%);
+  background: linear-gradient(135deg, #118ab2 0%, #0284c7 100%);
   color: #ffffff;
   border: none;
   border-radius: 14px;
   transition: all 0.3s ease;
 
   &:hover {
-    background: linear-gradient(135deg, #0284c7 0%, var(--ocean-cyan) 100%);
+    background: linear-gradient(135deg, #0284c7 0%, #118ab2 100%);
     box-shadow: 0 8px 25px rgba(17, 138, 178, 0.4);
     transform: translateY(-2px);
   }
