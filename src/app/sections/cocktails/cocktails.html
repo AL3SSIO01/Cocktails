@@ -42,13 +42,11 @@
               placeholder="Cerca cocktail"
               aria-label="Cerca cocktail"
               [formControl]="cocktail"
-              [disabled]="loader()"
             />
             <button
               class="btn btn-search-trigger px-4 fw-semibold text-white d-flex align-items-center"
               type="button"
               (click)="searchCocktails()"
-              [disabled]="loader()"
             >
               <span>Cerca</span>
               <i class="bi bi-arrow-right-short ms-1 fs-4 d-none d-sm-inline"></i>
@@ -61,7 +59,6 @@
               class="form-select btn-glass-select py-2 px-3 text-white"
               (change)="sort($any($event.target).value)"
               aria-label="Ordina cocktail"
-              [disabled]="loader()"
             >
               <option value="" class="bg-dark text-white">Scegli ordinamento:</option>
               <option value="asc" class="bg-dark text-white">Ordina per: Nome (A - Z)</option>
@@ -79,7 +76,6 @@
           class="btn btn-pill"
           [class.active]="filtroSelezionato() == 'tutti'"
           (click)="filtra('tutti')"
-          [disabled]="loader()"
         >
           Tutti
         </button>
@@ -88,7 +84,6 @@
           class="btn btn-pill"
           [class.active]="filtroSelezionato() == 'alcolici'"
           (click)="filtra('alcolici')"
-          [disabled]="loader()"
         >
           Alcolici
         </button>
@@ -97,7 +92,6 @@
           class="btn btn-pill"
           [class.active]="filtroSelezionato() == 'analcolici'"
           (click)="filtra('analcolici')"
-          [disabled]="loader()"
         >
           Non alcolici
         </button>

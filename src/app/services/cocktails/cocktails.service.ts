@@ -23,12 +23,12 @@ export class CocktailsService {
   }
 
   gestisciPreferiti(cocktail: Cocktail) {
-    if (this.setCocktailsPreferiti().includes(cocktail)) {
-      this.setCocktailsPreferiti.set(
-        this.setCocktailsPreferiti().filter((c) => c.idDrink != cocktail.idDrink),
-      );
+    const id = cocktail.idDrink;
+
+    if (this.preferitiIds().has(id)) {
+      this.setCocktailsPreferiti.update((preferiti) => preferiti.filter((c) => c.idDrink !== id));
     } else {
-      this.setCocktailsPreferiti.set([...this.setCocktailsPreferiti(), cocktail]);
+      this.setCocktailsPreferiti.update((preferiti) => [...preferiti, cocktail as Cocktail]);
       this.snackBar.openFromComponent(SnackBar, {
         duration: 4000,
         data: cocktail.strDrink,
