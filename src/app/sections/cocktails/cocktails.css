@@ -20,7 +20,6 @@
   }
 }
 
-/* Sfere Luminose d'Ambiente */
 .glow-sphere {
   position: absolute;
   border-radius: 50%;
@@ -62,9 +61,6 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* ==========================================
-   TOOLBAR: SEARCH BAR & FILTRI
-   ========================================== */
 .glass-toolbar {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(16px);
@@ -106,7 +102,6 @@
   }
 }
 
-/* Filter Pills */
 .btn-pill {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -129,7 +124,6 @@
   }
 }
 
-/* Stato Vuoto */
 .empty-state {
   background: rgba(255, 255, 255, 0.05);
   border: 1px dashed rgba(255, 255, 255, 0.12);

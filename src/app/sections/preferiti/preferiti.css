@@ -5,7 +5,6 @@
   color: #ffffff;
 }
 
-/* Sfere Luminose d'Ambiente */
 .glow-sphere {
   position: absolute;
   border-radius: 50%;
@@ -47,7 +46,6 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* Navigazione */
 .btn-back {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(12px);
@@ -77,7 +75,6 @@
   }
 }
 
-/* Bar Azioni & Statistiche */
 .glass-action-bar {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(16px);

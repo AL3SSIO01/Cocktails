@@ -1,5 +1,6 @@
 import { Component, Inject, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
 import { MAT_SNACK_BAR_DATA, MatSnackBarRef } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
@@ -12,10 +13,12 @@ import { Router } from '@angular/router';
 export class SnackBar {
   snackBarRef = inject(MatSnackBarRef);
   router = inject(Router);
+  readonly dialog = inject(MatDialog);
 
   constructor(@Inject(MAT_SNACK_BAR_DATA) public data: string) {}
 
   preferiti() {
+    this.dialog.closeAll();
     this.router.navigate(['/preferiti']);
   }
 }

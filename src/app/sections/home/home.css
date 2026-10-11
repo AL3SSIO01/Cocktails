@@ -1,12 +1,8 @@
-/* ==========================================
-   TROPICAL LOUNGE - CSS VARIABLES & THEMING
-   ========================================== */
 :host {
   --glass-hover-border: rgba(255, 255, 255, 0.3);
   --glass-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
-/* Base Container */
 .tropical-home-container {
   background: linear-gradient(135deg, #0b131f 0%, #162436 50%, #0a1118 100%);
   position: relative;
@@ -14,7 +10,6 @@
   color: #ffffff;
 }
 
-/* Background Ambient Glow Spheres */
 .glow-sphere {
   position: absolute;
   border-radius: 50%;
@@ -40,7 +35,6 @@
   right: 10%;
 }
 
-/* Header & Typography */
 .hero-content {
   max-width: 680px;
   z-index: 1;
@@ -64,7 +58,6 @@
   line-height: 1.6;
 }
 
-/* Glassmorphic Tropical Cards */
 .tropical-card {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(16px);
@@ -90,7 +83,6 @@
   }
 }
 
-/* Icons styling */
 .icon-wrapper {
   width: 80px;
   height: 80px;
@@ -114,7 +106,6 @@
   border: 1px solid rgba(255, 107, 107, 0.3);
 }
 
-/* Buttons */
 .btn-tropical {
   border-radius: 14px;
   border: none;
