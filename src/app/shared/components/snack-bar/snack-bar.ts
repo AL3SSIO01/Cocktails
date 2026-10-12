@@ -11,9 +11,9 @@ import { Router } from '@angular/router';
   templateUrl: './snack-bar.html',
 })
 export class SnackBar {
-  snackBarRef = inject(MatSnackBarRef);
-  router = inject(Router);
-  readonly dialog = inject(MatDialog);
+  private snackBarRef = inject(MatSnackBarRef);
+  private router = inject(Router);
+  private dialog = inject(MatDialog);
 
   constructor(@Inject(MAT_SNACK_BAR_DATA) public data: string) {}
 

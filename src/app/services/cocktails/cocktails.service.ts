@@ -2,10 +2,10 @@ import { computed, inject, Service, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_PATH } from '../../constants/api-paths';
 import { HttpClient } from '@angular/common/http';
-import { Cocktail, Drinks } from '../../models/cocktail';
-import { Drink } from '../../models/dettaglioCocktail';
+import { Cocktail, Drinks } from '../../shared/models/cocktail';
+import { Drink } from '../../shared/models/dettaglioCocktail';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SnackBar } from '../../components/snack-bar/snack-bar';
+import { SnackBar } from '../../shared/components/snack-bar/snack-bar';
 
 @Service()
 export class CocktailsService {

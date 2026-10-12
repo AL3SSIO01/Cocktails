@@ -1,8 +1,8 @@
 import { Component, computed, inject, OnInit, Signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CocktailsService } from '../../services/cocktails/cocktails.service';
-import { Cocktail } from '../../models/cocktail';
-import { Card } from '../../components/card/card';
+import { Cocktail } from '../../shared/models/cocktail';
+import { Card } from '../../shared/components/card/card';
 
 @Component({
   imports: [RouterLink, Card],
@@ -11,7 +11,8 @@ import { Card } from '../../components/card/card';
   templateUrl: './preferiti.html',
 })
 export class Preferiti implements OnInit {
-  cocktailsService = inject(CocktailsService);
+  private cocktailsService = inject(CocktailsService);
+
   cocktailsPreferiti!: Signal<Cocktail[]>;
   preferitiIds = computed(() => new Set(this.cocktailsPreferiti().map((c) => c.idDrink)));
 

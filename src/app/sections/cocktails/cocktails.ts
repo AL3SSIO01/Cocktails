@@ -1,13 +1,13 @@
 import { Component, inject, OnDestroy, OnInit, Signal, signal } from '@angular/core';
 import { CocktailsService } from '../../services/cocktails/cocktails.service';
-import { Cocktail, Drinks } from '../../models/cocktail';
+import { Cocktail, Drinks } from '../../shared/models/cocktail';
 import { RouterLink } from '@angular/router';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { Card } from '../../components/card/card';
+import { Card } from '../../shared/components/card/card';
 import { Subscription } from 'rxjs';
 import { LoaderService } from '../../services/loader/loader.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { Error } from '../../components/error/error';
+import { Error } from '../../shared/components/error/error';
 
 export type TipoFiltro = 'tutti' | 'alcolici' | 'analcolici';
 export type TipoOrdinamento = 'asc' | 'desc' | '';
@@ -20,8 +20,9 @@ export type TipoOrdinamento = 'asc' | 'desc' | '';
   styleUrl: './cocktails.css',
 })
 export class Cocktails implements OnInit, OnDestroy {
-  loaderService = inject(LoaderService);
-  cocktailsService = inject(CocktailsService);
+  private loaderService = inject(LoaderService);
+  private cocktailsService = inject(CocktailsService);
+
   cocktails = signal<Cocktail[]>([]);
   cocktailsPreferiti!: Signal<Cocktail[]>;
   cocktail = new FormControl();

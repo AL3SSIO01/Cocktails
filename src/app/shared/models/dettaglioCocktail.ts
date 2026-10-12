@@ -1,4 +1,4 @@
-export interface CocktailApiResponse {
+export interface DettaglioCocktailDto {
   strDrink: string;
   idDrink: number;
   strAlcoholic: string;
@@ -11,11 +11,6 @@ export interface CocktailApiResponse {
   strInstructions: string;
 }
 
-export interface IngredientItem {
-  name: string;
-  measure: string | null;
-}
-
 export interface Drink {
-  drinks: CocktailApiResponse[];
+  drinks: DettaglioCocktailDto[];
 }

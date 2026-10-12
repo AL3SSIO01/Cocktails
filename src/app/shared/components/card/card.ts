@@ -1,8 +1,8 @@
 import { Component, inject, Input } from '@angular/core';
 import { Cocktail } from '../../models/cocktail';
-import { CocktailsService } from '../../services/cocktails/cocktails.service';
 import { DettaglioCocktail } from '../../components/dettaglio-cocktail/dettaglio-cocktail';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { CocktailsService } from '../../../services/cocktails/cocktails.service';
 
 @Component({
   imports: [MatDialogModule],
@@ -11,9 +11,10 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
   templateUrl: './card.html',
 })
 export class Card {
-  cocktailsService = inject(CocktailsService);
+  private cocktailsService = inject(CocktailsService);
+  private dialog = inject(MatDialog);
+
   @Input() cocktail!: Cocktail;
-  readonly dialog = inject(MatDialog);
 
   openDialog(id: number) {
     this.dialog.open(DettaglioCocktail, {
