@@ -14,3 +14,8 @@ export interface DettaglioCocktailDto {
 export interface Drink {
   drinks: DettaglioCocktailDto[];
 }
+
+export interface IngredienteDettaglio {
+  nome: string;
+  misura: string;
+}

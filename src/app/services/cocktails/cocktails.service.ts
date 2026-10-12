@@ -11,6 +11,7 @@ import { SnackBar } from '../../shared/components/snack-bar/snack-bar';
 export class CocktailsService {
   private http = inject(HttpClient);
   private snackBar = inject(MatSnackBar);
+  preferitiIds = computed(() => new Set(this.setCocktailsPreferiti().map((c) => c.idDrink)));
 
   searchCocktails(cocktail: string): Observable<Drinks> {
     const baseUrl = API_PATH.search + `?s=${cocktail}`;
@@ -36,7 +37,9 @@ export class CocktailsService {
     }
   }
 
-  preferitiIds = computed(() => new Set(this.setCocktailsPreferiti().map((c) => c.idDrink)));
+  isFavorite(idDrink: number): boolean {
+    return this.preferitiIds().has(idDrink);
+  }
 
   setCocktailsPreferiti = signal<Cocktail[]>([]);
   getCocktailsPreferiti = this.setCocktailsPreferiti.asReadonly();

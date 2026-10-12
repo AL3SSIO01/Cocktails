@@ -6,14 +6,9 @@ import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatListModule } from '@angular/material/list';
-import { DettaglioCocktailDto } from '../../models/dettaglioCocktail';
+import { DettaglioCocktailDto, IngredienteDettaglio } from '../../models/dettaglioCocktail';
 import { Error } from '../error/error';
 import { CocktailsService } from '../../../services/cocktails/cocktails.service';
-
-export interface IngredienteDettaglio {
-  nome: string;
-  misura: string;
-}
 
 @Component({
   imports: [

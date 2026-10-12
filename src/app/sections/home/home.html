@@ -1,11 +1,9 @@
 <div
   class="tropical-home-container d-flex flex-column align-items-center justify-content-center min-vh-100 py-5 px-3"
 >
-  <!-- Sfere di luce d'ambiente (Effetto Glow Tropicale) -->
   <div class="glow-sphere sphere-1" aria-hidden="true"></div>
   <div class="glow-sphere sphere-2" aria-hidden="true"></div>
 
-  <!-- Header / Hero Section -->
   <header class="text-center mb-5 hero-content position-relative">
     <span class="badge tropical-badge mb-3 px-3 py-2 rounded-pill fs-6 fw-semibold">
       🍹 Tropical Mixology Experience
@@ -19,10 +17,8 @@
     </p>
   </header>
 
-  <!-- Sezione Cards Principali -->
   <main class="container position-relative">
     <div class="row g-4 justify-content-center">
-      <!-- Card 1: Catalogo -->
       <div class="col-12 col-md-6 col-lg-5">
         <article class="card tropical-card h-100 text-center p-4">
           <div class="card-body d-flex flex-column align-items-center justify-content-between">
@@ -38,7 +34,6 @@
               </p>
             </div>
 
-            <!-- Utilizzo di routerLink per la navigazione Angular -->
             <a
               [routerLink]="['/cocktails']"
               class="btn btn-tropical btn-catalog w-100 py-3 fw-bold text-uppercase tracking-wide"
@@ -49,7 +44,6 @@
         </article>
       </div>
 
-      <!-- Card 2: Preferiti -->
       <div class="col-12 col-md-6 col-lg-5">
         <article class="card tropical-card h-100 text-center p-4">
           <div class="card-body d-flex flex-column align-items-center justify-content-between">
@@ -77,7 +71,6 @@
     </div>
   </main>
 
-  <!-- Footer Minimal -->
   <footer class="mt-5 text-center text-white-50 position-relative">
     <small>© 2026 Tropical Lounge • Angular 22 & Bootstrap v5</small>
   </footer>
