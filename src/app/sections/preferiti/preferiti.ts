@@ -14,7 +14,6 @@ export class Preferiti implements OnInit {
   private cocktailsService = inject(CocktailsService);
 
   cocktailsPreferiti!: Signal<Cocktail[]>;
-  preferitiIds = computed(() => new Set(this.cocktailsPreferiti().map((c) => c.idDrink)));
 
   ngOnInit(): void {
     this.cocktailsPreferiti = this.cocktailsService.getCocktailsPreferiti;
